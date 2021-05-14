@@ -13,7 +13,7 @@ exports.translate = async (text, sourceLang, targetLang) => {
             headers: {
                 "Ocp-Apim-Subscription-Key": process.env.SUBSCRIPTION_KEY,
                 "Ocp-Apim-Subscription-Region": translationServiceLocation,
-                "Content-type": "application/json",
+                "Content-type": "application/json; charset=UTF-8",
             },
             params: {
                 "api-version": "3.0",
