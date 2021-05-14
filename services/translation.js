@@ -30,13 +30,22 @@ exports.translate = async (text, sourceLang, targetLang) => {
 
         return response.data[0].translations[0];
     } catch (error) {
-        console.error(error.response);
-        const { status, statusText, data } = error.response;
+        console.error(error);
+        if (error.response) {
+            const { status, statusText, data } = error.response;
+            return {
+                error: {
+                    status,
+                    statusText,
+                    message: data.error.message,
+                },
+            };
+        }
         return {
             error: {
-                status,
-                statusText,
-                message: data.error.message,
+                status: 500,
+                statusText: "Internal Server Error",
+                message: "Something went wrong!",
             },
         };
     }
