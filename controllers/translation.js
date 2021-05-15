@@ -1,4 +1,5 @@
 const { translate } = require("../services/translation");
+const { cacheTranslationsToDB } = require("../utils/translation");
 const { executeQuery } = require("../db");
 
 exports.translate = async (req, res) => {
@@ -35,6 +36,9 @@ exports.translate = async (req, res) => {
         }
 
         res.status(200).json(translation);
+
+        // This function is executed after sending response, so it will NOT affect the response time
+        cacheTranslationsToDB(text, sourceLang, translation.text, targetLang);
     } catch (error) {
         console.error(error);
         res.status(500).send("Something went wrong!");
