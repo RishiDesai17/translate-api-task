@@ -4,9 +4,6 @@ const { executeQuery } = require("../db");
 exports.translate = async (req, res) => {
     try {
         const { text, sourceLang, targetLang } = req.body;
-        if (!text || !sourceLang || !targetLang) {
-            return res.status(400).send("Input fields incomplete");
-        }
 
         // This join will return a row only if both the original text 
         // and its required translation for user requested language is found

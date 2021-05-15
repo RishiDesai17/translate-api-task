@@ -3,6 +3,8 @@ const router = express.Router();
 
 const TranslationController = require("../controllers/translation");
 
-router.post("/", TranslationController.translate);
+const { validateTranslationInputs } = require("../middleware");
+
+router.post("/", validateTranslationInputs, TranslationController.translate);
 
 module.exports = router;
