@@ -4,7 +4,7 @@ const config = {
     host: process.env.DB_HOST,
     user: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
-    database: "translationcache",
+    database: process.env.DB,
 };
 
 if (process.env.NODE_ENV === "development") {
@@ -19,5 +19,6 @@ const executeQuery = async (sql, params) => {
 };
 
 module.exports = {
+    pool,
     executeQuery,
 };
