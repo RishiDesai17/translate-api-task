@@ -58,3 +58,6 @@
     - Then after we get the primary key of this newly generated row. We will cache the translation of requested language and its related language to the "translation" table.
     - We determine related language by the sample object given in constants/index.js, In this file I have clubbed some south-asian and european languages. This can be extended to more languages and more regions.
     - These above queries are made as part of a transaction, so that if anything goes wrong, we can rollback in the catch block.
+    ### Potential improvements
+    - After sending the response, we could run the caching and pre-caching logic as a child process. That way this duty can be handled by another core, and the event loop has lesser burden.
+    - Redis is a good alternative for caching.
