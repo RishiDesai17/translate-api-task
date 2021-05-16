@@ -4,37 +4,44 @@
 - MySQL(with Xampp preferably) version 8.x
 
 ## Initial Steps:
-- <p>Make a .env file in the root of the project with the following attributes:</p>
-<code>
-    DB=translationcache<br>
-    DB_HOST=localhost<br>
-    DB_USERNAME=Enter your MySQL username here<br>
-    DB_PASSWORD=Enter your MySQL password here<br>
-    DB_PORT=Enter port on which MySQL is running<br>
+- Make a .env file in the root of the project with the following attributes:
+    ```
+    DB=translationcache
+    DB_HOST=localhost
+    DB_USERNAME=Enter your MySQL username here
+    DB_PASSWORD=Enter your MySQL password here
+    DB_PORT=Enter port on which MySQL is running
     SUBSCRIPTION_KEY=Enter subscription key for azure translation service
-</code>
-<p></p>
-- <p>Create a new database in MySQL with the name "translationcache" and collation "utf8_general_ci" (v.imp.) as shown below:</p>
-<img src="https://i.imgur.com/0giezfU.png" width="400" height="80">
+    ```
+- Create a new database in MySQL with the name "translationcache" and collation "utf8_general_ci" (v.imp.) as shown below:
+    <img src="https://i.imgur.com/0giezfU.png" width="400" height="80">
 
 ## To run
 - After you have completed the above steps, you can install dependecies and run the project (make sure your MySQL db is running on your computer on the port you entered in the .env file)<br>
-<code>
-    npm install<br>
-    npm run dev<br>
-</code>
+    ```
+    npm install
+    npm run dev
+    ```
 - To access the translation API send a POST request to http://localhost:3000/api/translate
 - The request body should contain 3 attributes:
     - text: a string which is to be translated(character limit is 200)
-    - sourceLang: the language in which your text is written
-    - targetLang: the language you want your text translated to
+    - sourceLang: the code of the language in which your text is written
+    - targetLang: the code of the language you want your text translated to<br>
+  For example:
+    ```
+    {
+        "text": "pen",
+        "sourceLang": "en", // Language code for English
+        "targetLang": "fr"  // Language code for French
+    }
+    ```
 
 ## To test
 - Make sure your MySQL db is running on your computer on the port you entered in the .env file and you have installed all dependencies using "npm install"
 - Then run the below command:<br>
-<code>
-    npm test<br>
-</code>
+    ```
+    npm test
+    ```
 
 # Project explanation
 - The database design consists of 2 tables:
