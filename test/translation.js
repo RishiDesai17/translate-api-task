@@ -49,7 +49,7 @@ describe("Translations", () => {
         });
 
         // Below are some valid test cases which should return 200 status code
-        it("should return 400 status since one of the language codes is invalid", (done) => {
+        it("should return 200 status and expected translation", (done) => {
             const body = {
                 text: "dog",
                 sourceLang: "en",
@@ -71,7 +71,7 @@ describe("Translations", () => {
                 });
         });
 
-        it("should return 400 status since one of the language codes is invalid", (done) => {
+        it("should return 200 status and expected translation", (done) => {
             const body = {
                 text: "टोपी",
                 sourceLang: "hi",
@@ -93,7 +93,7 @@ describe("Translations", () => {
                 });
         });
 
-        it("should return 400 status since one of the language codes is invalid", (done) => {
+        it("should return 200 status and expected translation", (done) => {
             const body = {
                 text: "chat",
                 sourceLang: "fr",
