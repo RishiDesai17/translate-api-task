@@ -4,9 +4,10 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --timeout 10000",
     "start": "set NODE_ENV=production&& node server.js || export NODE_ENV=production&& node server.js",
-    "dev": "set NODE_ENV=development&& nodemon server.js || export NODE_ENV=development&& nodemon server.js"
+    "dev": "set NODE_ENV=development&& nodemon server.js || export NODE_ENV=development&& nodemon server.js",
+    "pretest": "eslint --ignore-path .gitignore ."
   },
   "author": "",
   "license": "ISC",
@@ -17,6 +18,10 @@
     "mysql2": "^2.2.5"
   },
   "devDependencies": {
+    "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
+    "eslint": "^7.26.0",
+    "mocha": "^8.4.0",
     "nodemon": "^2.0.7"
   }
 }

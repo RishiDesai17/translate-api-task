@@ -24,7 +24,7 @@ const init = async () => {
     );
 };
 
-const port = 3001;
+const port = process.env.PORT || 3001;
 init()
     .then(() => {
         app.listen(port, () => {
@@ -34,3 +34,5 @@ init()
     .catch((error) => {
         console.log(error);
     });
+
+module.exports = app;
