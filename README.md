@@ -1,7 +1,7 @@
 # Steps for installation
 ## Requirements:
 - Node.js version 14.x
-- MySQL(with Xampp preferably) version 8.x
+- MySQL version 8.x
 
 ## Initial Steps:
 - Make a .env file in the root of the project with the following attributes:
@@ -13,7 +13,7 @@
     DB_PORT=Enter port on which MySQL is running
     SUBSCRIPTION_KEY=Enter subscription key for azure translation service
     ```
-- Create a new database in MySQL with the name "translationcache" and collation "utf8_general_ci" (v.imp.) as shown below:
+- Create a new database in MySQL with the name "translationcache", charset "utf8" (if this option is asked for) and collation "utf8_general_ci" as shown below:<br>
     <img src="https://i.imgur.com/0giezfU.png" width="400" height="80">
 
 ## To run
@@ -61,6 +61,6 @@
     - Then after we get the primary key of this newly generated row. We will cache the translation of requested language and its related language to the "translation" table.
     - We determine related language by the sample object given in constants/index.js, In this file I have clubbed some south-asian and european languages. This can be extended to more languages and more regions.
     - These above queries are made as part of a transaction, so that if anything goes wrong, we can rollback in the catch block.
-    ### Potential improvements
-    - After sending the response, we could run the caching and pre-caching logic as a child process. That way this duty can be handled by another core, and the event loop has lesser burden.
-    - Redis is a good alternative for caching.
+### Potential improvements
+   - After sending the response, we could run the caching and pre-caching logic as a child process. That way this duty can be handled by another core, and the event loop has lesser burden.
+   - Redis is a good alternative for caching.
