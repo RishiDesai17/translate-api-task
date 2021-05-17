@@ -1,5 +1,6 @@
 exports.translationBaseURL = "https://api.cognitive.microsofttranslator.com";
-exports.translationServiceLocation = "centralindia";
+exports.translationServiceLocation =
+    process.env.NODE_ENV === "development" ? "centralindia" : "eastus";
 
 // related languages by region to use during smart pre-caching
 exports.regions = {
