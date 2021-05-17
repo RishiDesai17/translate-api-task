@@ -43,6 +43,9 @@
     npm test
     ```
 
+## If you have trouble running the project
+- You can call the API on the deployed backend on heroku. Send a POST request to http://codeyoung-task.herokuapp.com/api/translate with the response body as mentioned above.
+
 # Project explanation
 - The database design consists of 2 tables:
     - The first table called "original" will contain the original text and its language, that was sent for translation
